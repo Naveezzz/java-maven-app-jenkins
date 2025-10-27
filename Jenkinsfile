@@ -1,25 +1,23 @@
 pipeline {
     agent any
     
-    
-    tools{
+    tools {
         maven "Maven3"
     }
-
     stages {
-        stage('clean workspace') {
+        stage('Clean workspace') {
             steps {
                 cleanWs()
             }
         }
-        stage('git clone') {
+        stage('Git clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/Naveezzz/java-maven-app-jenkins.git'
+                git branch: 'main', url: 'https://github.com/Aseemakram19/java-maven-app.git'
             }
         }
         stage('maven war file build') {
             steps {
-                sh 'mvn clean package'
+               sh 'mvn clean package'
             }
         }
         stage('Docker images/conatiner remove') {
@@ -27,28 +25,30 @@ pipeline {
                 script{
                         sh '''docker stop javamavenapp_container
                         docker rm javamavenapp_container
-                        docker rmi javamavenapp naveezzz/naveenmavenapp:latest'''
+                        docker rmi javamavenapp aseemakram19/javamavenapp:latest'''
                 }  
             }
         }
-        stage('docker image - push to dockerhub') {
+        stage('Docker images - Push to dockerhub') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'docker', toolname: 'docker') {
-                        
+                    withDockerRegistry(credentialsId: 'docker', toolname: 'docker'){
+                
                         sh '''docker build -t javamavenapp .
-                        docker tag javamavenapp naveezzz/naveenmavenapp:latest
-                        docker push naveezzz/naveenmavenapp:latest'''
-                     }
-                 }
+                        docker tag javamavenapp aseemakram19/javamavenapp:latest
+                        docker push  aseemakram19/javamavenapp:latest'''
+                      } 
+                }
             }
         }
         stage('docker container of app') {
             steps {
-               sh 'docker run -d -p 9000:8080 --name javamavenapp_container -t naveezzz/naveenmavenapp:latest'
+               sh 'docker run -d -p 9000:8080 --name javamavenapp_container -t aseemakram19/javamavenapp:latest'
             }
         }
-    '''post {
+        
+    }
+    post {
     always {
         script {
             def buildStatus = currentBuild.currentResult
@@ -71,6 +71,7 @@ pipeline {
                 attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
             )
            }
-       }'''
+       }
+
     }
 }
