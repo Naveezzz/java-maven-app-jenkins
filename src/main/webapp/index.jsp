@@ -1,16 +1,12 @@
 <html>
 <body>
-<h1><font color='green'> Welcome to Cloudaseem Youtube Channel- yours Destination for Cloud AI & Devops Training <font></h1>
+<h1><font color='green'> Naveen J N <font></h1>
 
-<a href="https://www.youtube.com/@clouddevopswithaseem">Click Here To See our youtube Channel</a>
   
-  <h2> Website : https://www.cloudaseem.com </h2>
+  <h2> https://github.com/Naveezzz</h2>
   
-  <h3> Linkdien : Follow us  : www.linkedin.com/in/mohammed-aseem-akram  </h3>
-
-  <h4> Subscribe & Share the Channel </h4>
-
-  <h5> https://github.com/Aseemakram19  <h5> 
+  <h3> Linkdien : Follow me https://www.linkedin.com/in/naveen-j-n-28572b234/</h3>
+ 
 
 </body>
 </html>
